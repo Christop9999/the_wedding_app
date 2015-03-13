@@ -39,6 +39,7 @@ gem 'coffee-script-source', '1.8.0'
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 group :development, :test do 
+	gem 'sqlite3'
 	gem 'rspec-rails', '~> 2.0'
 end
 
@@ -49,7 +50,5 @@ group :development do
   gem 'sqlite3'
 end
 
-group :production do
-  gem 'pg'
-end
+
 
