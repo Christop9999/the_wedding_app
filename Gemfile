@@ -3,6 +3,10 @@ source 'https://rubygems.org'
 
 
 gem 'rails', '4.1.6'
+group :development, :test do 
+	gem 'sqlite3'
+	gem 'rspec-rails', '~> 2.0'
+end
 
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -38,10 +42,7 @@ gem 'coffee-script-source', '1.8.0'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
-group :development, :test do 
-	gem 'sqlite3'
-	gem 'rspec-rails', '~> 2.0'
-end
+
 
 group :test do
 	gem 'capybara', '~> 2.1.0'
