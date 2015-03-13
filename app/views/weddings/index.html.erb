@@ -1,0 +1,40 @@
+<h1>Listing weddings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Bride</th>
+      <th>Groom</th>
+      <th>Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+<div class="container">
+ 
+      <div class="starter-template">
+      <% @weddings.each do |wedding| %>
+      <tr>
+        <td><%= wedding.name %></td>
+        <td><%= wedding.bride %></td>
+        <td><%= wedding.groom %></td>
+        <td><%= wedding.date %></td>
+        <td><%= link_to 'Show', wedding %></td>
+        <td><%= link_to 'Edit', edit_wedding_path(wedding) %></td>
+        <td><%= link_to 'Destroy', wedding, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Wedding', new_wedding_path, class: "btn btn-info" %>
+
+      </div>
+ 
+</div><!-- /.container -->
+
+    
