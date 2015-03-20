@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
-  resources :weddings
+  
+
+    namespace :api do
+      resources :weddings
+    end
+
+    resources :weddings
   root 'weddings#index'
+
+  
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
