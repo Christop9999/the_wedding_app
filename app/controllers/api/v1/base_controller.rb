@@ -1,4 +1,5 @@
 module API
+  module V1
   class BaseController < ApplicationController
     skip_before_action :verify_authenticity_token
     protect_from_forgery with: :null_session
@@ -9,7 +10,7 @@ module API
   set_resource(resource_class.new(resource_params))
 
   if get_resource.save
-    render status: :created
+    render :show, status: :created
   else
     render json: get_resource.errors, status: :unprocessable_entity
   end
@@ -98,4 +99,5 @@ end
       # POST /api/{plural_resource_name}
 
   end
+end
 end

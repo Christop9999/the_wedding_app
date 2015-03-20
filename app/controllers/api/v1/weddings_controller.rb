@@ -1,5 +1,6 @@
 module API
-  class WeddingsController < API::BaseController
+  module V1
+  class WeddingsController < API::V1::BaseController
   
   
 
@@ -20,7 +21,7 @@ private
 
      end
   end
-
+end
   
 
 
