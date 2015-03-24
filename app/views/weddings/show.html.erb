@@ -1,10 +1,16 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
+<div class="row">
+	<div class="col-md-4">
+	<div class="panel panel-primary">
+	<div class="panel-heading">
 
 <p>
   <strong>Name:</strong>
   <%= @wedding.name %>
 </p>
-
+</div>
+<div class="panel-body">
 <p>
   <strong>Bride:</strong>
   <%= @wedding.bride %>
@@ -19,6 +25,24 @@
   <strong>Date:</strong>
   <%= @wedding.date %>
 </p>
+</div>
+<div class="panel-footer">
 
 <%= link_to 'Edit', edit_wedding_path(@wedding) %> |
 <%= link_to 'Back', weddings_path %>
+</div>
+</div>
+</div>
+
+<div= class="col-md4">
+
+  <strong>Venue</strong>
+  <%= @wedding.date %>
+</p>
+
+
+
+
+</div>
+</div>
+</div>

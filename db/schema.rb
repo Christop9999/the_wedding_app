@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150307072936) do
+ActiveRecord::Schema.define(version: 20150323195054) do
+
+  create_table "venues", force: true do |t|
+    t.integer  "wedding_id"
+    t.string   "name"
+    t.string   "description"
+    t.string   "street"
+    t.string   "city"
+    t.string   "zip"
+    t.string   "state"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "venues", ["wedding_id"], name: "index_venues_on_wedding_id"
 
   create_table "weddings", force: true do |t|
     t.string   "name"
