@@ -10,6 +10,7 @@ class WeddingsController < ApplicationController
   # GET /weddings/1
   # GET /weddings/1.json
   def show
+   
   end
 
   # GET /weddings/new

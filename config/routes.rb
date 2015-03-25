@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   
 
+  get 'venues/edit'
+
+  get 'venues/new'
+
     namespace :api do
       namespace :v1 do
       resources :weddings
@@ -8,7 +12,10 @@ Rails.application.routes.draw do
   end
   
 
-    resources :weddings
+    resources :weddings do
+      resources :venues 
+    end
+
   root 'weddings#index'
 
   

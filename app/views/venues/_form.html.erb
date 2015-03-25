@@ -1,0 +1,51 @@
+<%= simple_form_for([@wedding, @venue], html: {class: "well"}) do |f| %> 
+ <% if @venue.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@venue.errors.count, "error") %> prohibited this todo_item from being saved:</h2>
+
+      <ul>
+      <% @venue.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <div class="name">
+  <%= f.input :name %><br>
+  
+  </div>
+
+  <div class="description">
+   <%= f.input :description %><br>
+  
+  </div>
+
+  <div class="street">
+ <%= f.input :street %><br>
+  </div>
+
+<div class="city">
+ <%= f.input :city %><br>
+  </div>
+
+<div class="zip">
+<%= f.input :zip %><br>
+  </div>
+
+<div class="state">
+   <%= f.input :state %><br>
+  </div>
+
+<div class="url">
+   <%= f.input :url %><br>
+  </div>
+
+
+  <div class="action">  
+  <%= f.button :submit %>
+  </div>
+   
+<% end %>

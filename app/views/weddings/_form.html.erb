@@ -1,4 +1,4 @@
-<%= form_for(@wedding) do |f| %>
+<%= simple_form_for(@wedding, html: {class: "well"}) do |f| %>
   <% if @wedding.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@wedding.errors.count, "error") %> prohibited this wedding from being saved:</h2>
@@ -12,22 +12,22 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.input :name %><br>
+    
   </div>
   <div class="field">
-    <%= f.label :bride %><br>
-    <%= f.text_field :bride %>
+    <%= f.input :bride %><br>
+    
   </div>
   <div class="field">
-    <%= f.label :groom %><br>
-    <%= f.text_field :groom %>
+    <%= f.input :groom %><br>
+    
   </div>
   <div class="field">
-    <%= f.label :date %><br>
-    <%= f.date_select :date %>
+    <%= f.input_field :date, as: :date %><br>
+    
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.button :submit %>
   </div>
 <% end %>
