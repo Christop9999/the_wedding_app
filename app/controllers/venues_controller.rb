@@ -1,5 +1,17 @@
 class VenuesController < ApplicationController
-  before_action :find_wedding
+  before_action :find_wedding, :set_venue
+
+  def update
+    respond_to do |format|
+      if @venue.update(venue_params)
+        format.html { redirect_to @wedding, notice: 'Venue was successfully updated.' }
+        format.json { render :show, status: :ok, location: @venue }
+      else
+        format.html { render :edit }
+        format.json { render json: @venue.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   def edit
     @venue = @wedding.venues.first
@@ -30,5 +42,10 @@ class VenuesController < ApplicationController
 def venue_params
       params[:venue].permit(:name, :description, :street, :city, :zip, :state, :url)
     end
+
+    def set_venue
+ @venue = Venue.find(params[:id])
+    end
+
    
 end
