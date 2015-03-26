@@ -1,4 +1,8 @@
 
+var ready;
+ready = function() {
+
+
 $(document).ready(function(){/* off-canvas sidebar toggle */
 
 $('[data-toggle=offcanvas]').click(function() {
@@ -10,3 +14,6 @@ $('[data-toggle=offcanvas]').click(function() {
     $('#btnShow').toggle();
 });
 });
+}
+$(document).ready(ready);
+$(document).on('page:load', ready);
