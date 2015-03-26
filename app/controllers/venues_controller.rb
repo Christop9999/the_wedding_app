@@ -1,7 +1,5 @@
 class VenuesController < ApplicationController
-<<<<<<< HEAD
   before_action :find_wedding
-=======
   before_action :find_wedding, :set_venue
 
   def update
@@ -15,7 +13,7 @@ class VenuesController < ApplicationController
       end
     end
   end
->>>>>>> fcb9577bfd1c4afb01b4111aab83f7806577c739
+
 
   def edit
     @venue = @wedding.venues.first
@@ -46,13 +44,11 @@ class VenuesController < ApplicationController
 def venue_params
       params[:venue].permit(:name, :description, :street, :city, :zip, :state, :url)
     end
-<<<<<<< HEAD
-=======
+
 
     def set_venue
  @venue = Venue.find(params[:id])
     end
 
->>>>>>> fcb9577bfd1c4afb01b4111aab83f7806577c739
-   
+
 end

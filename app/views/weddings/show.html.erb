@@ -1,45 +1,6 @@
-
 <p id="notice"><%= notice %></p>
 <div class="container">
 <div class="row">
-<<<<<<< HEAD
-	<div class="col-md-4">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-
-        <p> 
-          <strong>Name:</strong> 
-          <%= @wedding.name %>
-        </p>
-      
-      </div>
-        
-      <div class="panel-body">
-        <p>
-          <strong>Bride:</strong>
-          <%= @wedding.bride %>
-        </p>
-
-        <p>
-          <strong>Groom:</strong>
-          <%= @wedding.groom %>
-        </p>
-
-        <p>
-          <strong>Date:</strong>
-          <%= @wedding.date %>
-        </p>
-      </div>
-        
-      <div class="panel-footer">
-
-        <%= link_to 'Edit', edit_wedding_path(@wedding) %> |
-        <%= link_to 'Back', weddings_path %>
-      </div>
-       
-    </div>
-  </div>
-=======
   <div class="col-md-4">
     <div class="panel panel-primary">
       <div class="panel-heading">
@@ -69,7 +30,6 @@
       </div>
         
       <div class="panel-footer">
->>>>>>> fcb9577bfd1c4afb01b4111aab83f7806577c739
 
         <%= link_to 'Edit', edit_wedding_path(@wedding) %> |
         <%= link_to 'Back', weddings_path %>
@@ -78,21 +38,7 @@
     </div>
   </div>
 
-  <div= class="col-md-4">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
 
-<<<<<<< HEAD
-        <p>
-          <strong>Venue</strong>
-        </p>
-      </div>
-        
-      
-        <% if @wedding.venues.blank? %>
-        <div class="panel-footer">
-
-=======
   <div= class="col-md-4">
     <div class="panel panel-primary">
       <div class="panel-heading">
@@ -106,7 +52,6 @@
         <% if @wedding.venues.blank? %>
         <div class="panel-footer">
 
->>>>>>> fcb9577bfd1c4afb01b4111aab83f7806577c739
          <strong>New:</strong>
           <%= link_to "Create a Venue", new_wedding_venue_path(@wedding) %>
        </div>
@@ -164,3 +109,5 @@
   </div>
 </div>
 </div>
+
+

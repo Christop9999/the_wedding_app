@@ -26,14 +26,14 @@
             <div class="column col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
               
                 <ul class="nav">
-                <li><a href="#" data-toggle="offcanvas" class="visible-xs text-center">test</a></li>
+                <li><a href="#" data-toggle="offcanvas" data-ajax="false" class="visible-xs text-center">test</a></li>
               </ul>
                
                 <ul class="nav hidden-xs" id="lg-menu">
-                    <li class="active"><a href="#featured"><i class="glyphicon glyphicon-list-alt"></i> Featured</a></li>
-                    <li><a href="#stories"><i class="glyphicon glyphicon-list"></i> Stories</a></li>
-                    <li><a href="#"><i class="glyphicon glyphicon-paperclip"></i> Saved</a></li>
-                     <li><%= link_to 'Show', @weddings_path %></li>
+                    <li class="active"><a href="#featured"><i class="glyphicon glyphicon-list-alt"></i> Wedding</a></li>
+                    <li><a href="#stories"><i class="glyphicon glyphicon-list"></i> Venues</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-paperclip"></i> Groomsman</a></li>
+                     <li><%= link_to "Home", weddings_path %></li>
                 </ul>
                     
                 <ul class="list-unstyled hidden-xs" id="sidebar-footer">
