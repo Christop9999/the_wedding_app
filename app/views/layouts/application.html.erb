@@ -1,15 +1,62 @@
+ 
 <!DOCTYPE html>
-<html>
-<head>
-  <title>WeddingApp</title>
+<html lang="en">
+  <head>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>WeddingApp</title>
+    <meta name="generator" content="Bootply" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="css/styles.css" rel="stylesheet">
+  </head>
+  <body>
+<div class="wrapper">
+    <div class="box">
+        <div class="row row-offcanvas row-offcanvas-left">
+                      
+          
+            <!-- sidebar -->
+            <div class="column col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
+              
+                <ul class="nav">
+                <li><a href="#" data-toggle="offcanvas" class="visible-xs text-center">test</a></li>
+              </ul>
+               
+                <ul class="nav hidden-xs" id="lg-menu">
+                    <li class="active"><a href="#featured"><i class="glyphicon glyphicon-list-alt"></i> Featured</a></li>
+                    <li><a href="#stories"><i class="glyphicon glyphicon-list"></i> Stories</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-paperclip"></i> Saved</a></li>
+                     <li><%= link_to 'Show', @weddings_path %></li>
+                </ul>
+                    
+                <ul class="list-unstyled hidden-xs" id="sidebar-footer">
+                    <li>
+                      
+                    </li>
+                </ul>
+              
+                <!-- tiny only nav-->
+              <ul class="nav visible-xs" id="xs-menu">
+                    <li><a href="#featured" class="text-center"><i class="glyphicon glyphicon-list-alt"></i>W</a></li>
+                    <li><a href="#stories" class="text-center"><i class="glyphicon glyphicon-list"></i></a>E</li>
+                    <li><a href="#" class="text-center"><i class="glyphicon glyphicon-paperclip"></i></a>D</li>
+                    <li>I<a href="#" class="text-center"><i class="glyphicon glyphicon-refresh"></i></a></li>
+                </ul>
 
+              
+            </div>
+            <!-- /sidebar -->
 
-</head>
-<body>
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+ 
+<div class="column col-sm-10 col-xs-11" id="main">
+<div class="navbar navbar-default navbar-static-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -34,14 +81,36 @@
   <% flash.each do |key, value| %>
       <div class='alert alert-<%= key %>'><%= value %></div>
   <% end %>
-  <div class='span12'><%= yield %></div>
+  <%= yield %>
   <%= debug(params) if Rails.env.development? %>
+
+<!--post modal-->
+<div id="postModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+  <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      Update Status
+      </div>
+      <div class="modal-body">
+          <form class="form center-block">
+            <div class="form-group">
+              <textarea class="form-control input-lg" autofocus="" placeholder="What do you want to share?"></textarea>
+            </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+          <div>
+          <button class="btn btn-primary btn-sm" data-dismiss="modal" aria-hidden="true">Post</button>
+            <ul class="pull-left list-inline"><li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li><li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li><li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li></ul>
+      </div>  
+      </div>
+  </div>
+  </div>
 </div>
- 
-</body>
-
-
-
-
-</body>
+  <!-- script references -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+  </body>
 </html>

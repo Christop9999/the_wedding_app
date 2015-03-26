@@ -1,40 +1,53 @@
-<h1>Listing weddings</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Bride</th>
-      <th>Groom</th>
-      <th>Date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+          
+            <!-- main right col -->
+            <div class="column col-sm-10 col-xs-11" id="main">
+                
+               
+              
+                <div class="padding">
+                    <div class="full col-sm-9">
+                      
+                        <!-- content -->                      
+                        <div class="row">
+                          
+                         <!-- main col left --> 
+                         <div class="panel panel-default">
+                                <div class="panel-heading"> Wedding List
+                                </div>
+                                <div class="panel-body">
+                        
+                         <%= div_for(@weddings.each, class: "starter-template") do |wedding| %>
+                            <tr>
+                              <td><%= wedding.name %></td>
+                              <td><%= wedding.bride %></td>
+                              <td><%= wedding.groom %></td>
+                              <td><%= wedding.date %></td>
+                              <td><%= link_to 'Show', wedding %></td>
+                              <td><%= link_to 'Edit', edit_wedding_path(wedding) %></td>
+                              <td><%= link_to 'Destroy', wedding, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                            </tr>
+                          <% end %>
+                          </div>
+                          </div>
 
-  <tbody>
-<div class="container">
- 
-     
-      <%= div_for(@weddings.each, class: "starter-template") do |wedding| %>
-      <tr>
-        <td><%= wedding.name %></td>
-        <td><%= wedding.bride %></td>
-        <td><%= wedding.groom %></td>
-        <td><%= wedding.date %></td>
-        <td><%= link_to 'Show', wedding %></td>
-        <td><%= link_to 'Edit', edit_wedding_path(wedding) %></td>
-        <td><%= link_to 'Destroy', wedding, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+                           
+                             
+                          
+                          <!-- main col right -->
+                          <div class="col-sm-7">
+                               
+                                
+                        
+                      
+                    </div><!-- /col-9 -->
+                </div><!-- /padding -->
+            </div>
+            <!-- /main -->
+          
+        </div>
+    </div>
+</div>
 
-<%= link_to 'New Wedding', new_wedding_path, class: "btn btn-info" %>
 
-      </div>
- 
-</div><!-- /.container -->
-
-    
