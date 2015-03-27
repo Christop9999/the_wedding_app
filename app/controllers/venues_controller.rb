@@ -1,6 +1,6 @@
 class VenuesController < ApplicationController
+  
   before_action :find_wedding
-  before_action :find_wedding, :set_venue
 
   def update
     respond_to do |format|
