@@ -12,6 +12,7 @@ group :production do
 	gem 'pg'
 end
 gem 'kaminari'
+gem 'paperclip'
 
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets

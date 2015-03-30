@@ -4,6 +4,14 @@
   <div class="col-md-4">
     <div class="panel panel-primary">
       <div class="panel-heading">
+      
+      <% if @wedding.attachment.blank? %>
+       
+
+        <%else %>
+      <%= image_tag @wedding.attachment.url(:medium) %>
+      <% end %>
+
 
         <p> 
           <strong>Name:</strong> 

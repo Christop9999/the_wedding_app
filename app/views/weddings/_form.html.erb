@@ -11,6 +11,13 @@
     </div>
   <% end %>
 
+  <div class="document">
+  
+    
+    <%= f.input :attachment, as: :file %>
+    
+</div>
+
   <div class="field">
     <%= f.input :name %><br>
     
@@ -25,8 +32,12 @@
   </div>
   <div class="field">
     <%= f.input_field :date, as: :date %><br>
+
+
     
   </div>
+
+  
   <div class="actions">
     <%= f.button :submit %>
   </div>
