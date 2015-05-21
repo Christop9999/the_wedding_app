@@ -25,7 +25,7 @@ end
 end
 
 authenticated :user, lambda {|u| u.admin == false} do
-  root to: "welcome#admin_home", as: :user_visitor
+  root to: "weddings#index", as: :user_visitor
   get 'weddings/search_results', to: 'weddings#search_results'
   get 'weddings', to: 'weddings#index'
   resources :weddings, only: [:show, :search_results] do
