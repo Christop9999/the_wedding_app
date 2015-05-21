@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 
 
@@ -13,7 +13,7 @@ group :production do
 end
 gem 'kaminari'
 gem 'paperclip'
-
+gem 'devise'
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -33,6 +33,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'coffee-script-source', '1.8.0'
 gem 'simple_form'
 gem 'jquery-turbolinks'
+gem 'doorkeeper'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

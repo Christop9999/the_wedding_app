@@ -10,23 +10,49 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+
  *= require_self
+ *= require_tree ./normal/
  *= require bootstrap
  */
 
 
 
 
- body { padding-top: 45px;}
 
- .form-control-inline {
-    min-width: 0;
-    width: auto;
-    display: inline;
-}
+
+
 
 .alert{
 
-	margin-top: 10px;
+	margin-top: 5px;
 }
+
+.oddrow {
+    background-color: #FAF2FA;
+}
+
+.evenrow {
+    background-color: #C0B4B4;
+}
+
+.tnav .navbar .container { 
+	height: 200px; 
+}
+
+#sidebar {
+  background: #9B59B6;
+}
+
+#lg-menu {
+  background: #9B59B6;
+}
+
+
+.navbar {min-height:50px !important;}
+
+.nav>li>a {
+  padding-right: 20px;
+}
+
+

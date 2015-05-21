@@ -1,6 +1,10 @@
 json.weddings @weddings do |wedding|
-  json.name    wedding.name
-  json.bride wedding.bride
+ 
+
+  if current_user.id == 2
+  	json.user wedding.user_id
+  end
+
 
   
 end

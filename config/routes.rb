@@ -1,22 +1,71 @@
 Rails.application.routes.draw do
   
+use_doorkeeper
+devise_for :users, :controllers => { registrations: 'users/registrations' }
+#devise_for :admins, :controllers => { :sessions => "admins/sessions" }
+resources :wedding_guests
 
-  get 'venues/edit'
+devise_scope :user do
+  get 'register', to: 'users/registrations#new', as: :register
+  get 'register_wedding', to: 'users/registrations#new', as: :register_wedding
+  get '/login', to: 'users/sessions#new', as: :login
+  get '/logout', to: 'users/sessions#destroy', as: :logout
+  resources :wedding_guests
+end
 
-  get 'venues/new'
+authenticated :user, lambda {|u| u.admin == true} do
+  root to: "weddings#index", as: :user_root
+  get 'weddings/search_results', to: 'weddings#search_results'
+  get 'weddings/add_wedding', to: 'weddings#add_wedding'
+  resources :wedding_guests
+  resources :weddings do
+  resources :venues 
+end
 
-    namespace :api do
-      namespace :v1 do
-      resources :weddings
-    end
-  end
+end
+
+authenticated :user, lambda {|u| u.admin == false} do
+  root to: "welcome#admin_home", as: :user_visitor
+  get 'weddings/search_results', to: 'weddings#search_results'
+  get 'weddings', to: 'weddings#index'
+  resources :weddings, only: [:show, :search_results] do
+  resources :venues 
+end
+end
+
   
+root to: 'welcome#index'
+resources :welcome
 
-    resources :weddings do
-      resources :venues 
-    end
 
-  root 'weddings#index'
+
+
+
+#devise_scope :admin do
+#  get 'register', to: 'admins/registrations#new', as: :register
+#  get '/login', to: 'admins/sessions#new', as: :login
+#  get '/logout', to: 'admins/sessions#destroy', as: :logout
+#end
+
+namespace :api do
+namespace :v1 do
+  get 'items/create'
+  end
+end
+
+
+
+
+
+namespace :api do
+    namespace :v1 do
+    resources :weddings
+  end
+end
+
+
+
+
 
   
 

@@ -1,0 +1,54 @@
+
+
+
+<div class = "row">
+  <div class = "col-md-4">
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "well"}) do |f| %>
+<fieldset>
+<legend><%= wedding_registration(request.fullpath) ? "Create New Wedding" : "Create Login" %></legend>
+  <%= devise_error_messages! %>
+
+  <div class = "form_control form_control-inline">
+      <%= f.input :first_name %>
+       
+  </div>
+<div>
+      <%= f.input :last_name %>  
+  </div>
+
+  <div>
+      <%= f.input :profile_name %> 
+  </div>
+
+  <div>
+    <%= f.input :admin, :as => :hidden, :input_html => { :value => true} if wedding_registration(request.fullpath) %>
+  </div>
+
+
+  <div class="field">
+    <%= f.input :email %>
+  </div>
+
+  <div class="field">
+    <%= f.input :password %>
+    <% if @validatable %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    
+  </div>
+
+  <div class="field">
+    <%= f.input :password_confirmation %><br />
+    
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit, "Sign up" %>
+  </div>
+  <fieldset>
+<% end %>
+</div>
+</div>
+
+
+<%= render "devise/shared/links" %>

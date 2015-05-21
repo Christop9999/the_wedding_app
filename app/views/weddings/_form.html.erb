@@ -1,4 +1,4 @@
-<%= simple_form_for(@wedding, html: {class: "well"}) do |f| %>
+<%= simple_form_for(@wedding, html: {class: "form-horizontal"}) do |f| %>
   <% if @wedding.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@wedding.errors.count, "error") %> prohibited this wedding from being saved:</h2>
@@ -11,13 +11,20 @@
     </div>
   <% end %>
 
+
+<fieldset>
+    <legend>Wedding Picture</legend>
+
   <div class="document">
   
-    
-    <%= f.input :attachment, as: :file %>
-    
+    <%=f.fields_for :document do |document_fields| %>
+    <%= document_fields.input :attachment, as: :file %>
+    <% end %>
 </div>
 
+</fieldset>
+<fieldset>
+    <legend>About My Wedding</legend>
   <div class="field">
     <%= f.input :name %><br>
     
@@ -36,6 +43,8 @@
 
     
   </div>
+  </fieldset>
+
 
   
   <div class="actions">

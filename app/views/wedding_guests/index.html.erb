@@ -1,0 +1,9 @@
+
+<%= div_for(current_user.wedding.guests, class: "starter-template2") do |guest| %>
+                         <div class="<%= cycle('oddrow', 'evenrow') -%>">
+                            <tr>
+                              <td><%= guest.first_name %></td>
+                            
+                            </tr>
+                            </div>
+                          <% end %>

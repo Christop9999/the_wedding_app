@@ -38,7 +38,7 @@ class VenuesController < ApplicationController
   private
 
   def find_wedding
-  	@wedding = Wedding.find(params[:wedding_id])
+  	@wedding = current_user.wedding
   end
 
 def venue_params
@@ -47,7 +47,7 @@ def venue_params
 
 
     def set_venue
- @venue = Venue.find(params[:id])
+ @venue = current_user.weddings.venues.find(params[:id])
     end
 
 

@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     actionmailer (4.1.6)
       actionpack (= 4.1.6)
@@ -28,6 +28,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    bcrypt (3.1.10-x86-mingw32)
     builder (3.2.2)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -46,7 +47,16 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    devise (3.4.1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      responders
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    doorkeeper (2.1.4)
+      railties (>= 3.2)
     erubis (2.7.0)
     execjs (2.4.0)
     hike (1.2.3)
@@ -72,6 +82,7 @@ GEM
     multi_json (1.11.0)
     nokogiri (1.6.6.2-x86-mingw32)
       mini_portile (~> 0.6.0)
+    orm_adapter (0.5.0)
     paperclip (4.2.1)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -99,6 +110,8 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
       json (~> 1.4)
+    responders (1.1.2)
+      railties (>= 3.2, < 4.2)
     rspec-collection_matchers (1.1.2)
       rspec-expectations (>= 2.99.0.beta1)
     rspec-core (2.99.2)
@@ -150,6 +163,8 @@ GEM
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    warden (1.2.3)
+      rack (>= 1.0)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -160,6 +175,8 @@ DEPENDENCIES
   capybara (~> 2.1.0)
   coffee-rails (~> 4.0.0)
   coffee-script-source (= 1.8.0)
+  devise
+  doorkeeper
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks

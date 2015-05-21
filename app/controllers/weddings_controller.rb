@@ -1,11 +1,38 @@
 class WeddingsController < ApplicationController
-  before_action :set_wedding, only: [:show, :edit, :update, :destroy]
-
+  #before_action :set_wedding
+  before_filter :authenticate_user!
+  before_action :wedding_layout
+ # layout :layout_by_resource
+  layout :wedding_layout
   # GET /weddings
   # GET /weddings.json
+
+
+
   def index
-    @weddings = Wedding.all
+  if current_user.admin
+    @weddings = current_user.wedding 
+  else
+    @weddings = current_user.wedding_part
   end
+  
+ 
+  
+  
+  
+  end
+
+  def search_results
+    if params[:search]
+      @weddings = Wedding.search(params[:search]).order("created_at DESC")
+    else
+      @weddings = Wedding.order("created_at DESC")
+    end
+  end
+
+  
+
+  
 
   # GET /weddings/1
   # GET /weddings/1.json
@@ -16,17 +43,20 @@ class WeddingsController < ApplicationController
   # GET /weddings/new
   def new
     @wedding = Wedding.new
-
+    @wedding.build_document
   end
 
   # GET /weddings/1/edit
   def edit
+    #@wedding.build_document
   end
 
   # POST /weddings
   # POST /weddings.json
   def create
-    @wedding = Wedding.new(wedding_params)
+
+    @wedding = current_user.create_wedding(wedding_params)
+    
 
     respond_to do |format|
       if @wedding.save
@@ -63,14 +93,41 @@ class WeddingsController < ApplicationController
     end
   end
 
+  def display
+
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_wedding
-      @wedding = Wedding.find(params[:id])
+      @wedding = Wedding.find(params[:id]) if params[:id]
     end
+
+    def set_guest
+
+    end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wedding_params
-      params.require(:wedding).permit(:name, :bride, :groom, :date, :attachment)
+      params.require(:wedding).permit(:name, :bride, :groom, :date, document_attributes: [:attachment, :id]) if params[:wedding]
     end
+
+  
+
+    def wedding_layout
+      if current_user.admin?
+       @wedding = Wedding.find(params[:id]) if params[:id]
+      "application"
+    else
+       @wedding = Wedding.find(params[:id]) if params[:id]
+       "wedding_view"
+    end
+  
 end
+
+end
+
+
+

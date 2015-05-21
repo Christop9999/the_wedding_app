@@ -1,0 +1,11 @@
+
+
+  <% @weddings.each do |wedding| %>
+  <div class="wedding">
+    <h1 class="wedding-name"><%= link_to wedding.name, wedding %></h1>
+    <p class="wedding-bride"><%= wedding.bride %></p>
+    <%= link_to "Add Wedding", wedding_guests_path(guest_id: current_user.id, wedding_id: wedding.id), class: 'btn btn-primary', data: { guest_id: current_user.id, wedding_id: wedding.id}, method: :post %>
+
+
+  </div>
+<% end %>

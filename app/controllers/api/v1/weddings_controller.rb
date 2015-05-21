@@ -2,7 +2,9 @@ module API
   module V1
   class WeddingsController < API::V1::BaseController
   
-  
+ 
+ 
+
 
     
 
