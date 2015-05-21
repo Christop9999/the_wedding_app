@@ -10,7 +10,7 @@ Bundler.require(*Rails.groups)
 
 module WeddingApp
   class Application < Rails::Application
-    
+    config.serve_static_assets = true
 
       # Enable the asset pipeline
     #config.assets.enabled = true
