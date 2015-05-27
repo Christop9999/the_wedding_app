@@ -20,7 +20,7 @@
                          <%= div_for(@weddings, class: "starter-template") do |wedding| %>
                          <div class="<%= cycle('oddrow', 'evenrow') -%>">
                             <tr>
-                              <td> <%= image_tag wedding.document.attachment.url(:thumb) %></td>
+                              
                               <td><%= wedding.name %></td>
                               <td><%= wedding.bride %></td>
                               <td><%= wedding.groom %></td>
