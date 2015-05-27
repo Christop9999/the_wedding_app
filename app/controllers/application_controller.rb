@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
  layout :wedding_layout
 
-protected
+ protected
 
 def wedding_layout
       if user_signed_in? && current_user.admin?

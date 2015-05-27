@@ -3,7 +3,7 @@ class WeddingsController < ApplicationController
   before_filter :authenticate_user!
   before_action :wedding_layout
  # layout :layout_by_resource
-  layout :wedding_layout
+  #layout :wedding_layout
   # GET /weddings
   # GET /weddings.json
 
@@ -37,7 +37,7 @@ class WeddingsController < ApplicationController
   # GET /weddings/1
   # GET /weddings/1.json
   def show
-   
+   render layout: 'show'
   end
 
   # GET /weddings/new
@@ -93,9 +93,7 @@ class WeddingsController < ApplicationController
     end
   end
 
-  def display
-
-  end
+  
 
 
   private

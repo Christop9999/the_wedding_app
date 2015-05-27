@@ -1,6 +1,7 @@
 class VenuesController < ApplicationController
   
   before_action :find_wedding
+  before_action :set_venue, only: [:edit, :update]
 
   def update
     respond_to do |format|
@@ -14,6 +15,24 @@ class VenuesController < ApplicationController
     end
   end
 
+  def show
+
+  end
+
+def destroy
+  if @wedding.venues.first.destroy
+  respond_to do |format|
+      format.html { redirect_to weddings_url, notice: 'Venue was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  else
+    respond_to do |format|
+      format.html { redirect_to weddings_url, notice: 'Venue was not destroyed.' }
+      format.json { head :no_content }
+    end
+
+end
+end
 
   def edit
     @venue = @wedding.venues.first
@@ -27,10 +46,10 @@ class VenuesController < ApplicationController
    
    @venue = @wedding.venues.new(venue_params)
     if @venue.save
-      flash[:success] = "Added todo list item."
-      redirect_to wedding_path(params[:wedding_id])
+      flash[:success] = "Added venue to wedding."
+      redirect_to wedding_venues_path(@wedding)
     else
-      flash[:error] = "there was a problem adding that todo list item."
+      flash[:error] = "there was a problem adding venue to wedding."
       render action: :new
     end
   end
@@ -47,7 +66,7 @@ def venue_params
 
 
     def set_venue
- @venue = current_user.weddings.venues.find(params[:id])
+ @venue = current_user.wedding.venues.find(params[:id])
     end
 
 

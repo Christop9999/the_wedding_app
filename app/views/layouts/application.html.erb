@@ -30,10 +30,9 @@
               </ul>
                
                 <ul class="nav hidden-xs" id="lg-menu">
-                    <li class="active"><a href="#featured"><i class="glyphicon glyphicon-list-alt"></i> Wedding</a></li>
-                    <li><a href="#stories"><i class="glyphicon glyphicon-list"></i> Venues</a></li>
-                    <li><a href="#"><i class="glyphicon glyphicon-paperclip"></i> Groomsman</a></li>
-                     <li><%= link_to "Home", weddings_path %></li>
+                    <li> <%= link_to "Home", weddings_path %></li>
+                     <li> <%= link_to 'Wedding', weddings_path %></li>
+                     <li> <%= link_to "Venue", wedding_venues_path(current_user.wedding) %></li>
                 </ul>
                     
                 <ul class="list-unstyled hidden-xs" id="sidebar-footer">

@@ -1,0 +1,117 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+
+      
+     
+        <%= wedding_document_link(@wedding) %>
+
+        <p> 
+          <strong>Name:</strong> 
+          <%= @wedding.name %>
+        </p>
+      
+      </div>
+        
+      <div class="panel-body">
+        <p>
+          <strong>Bride:</strong>
+          <%= @wedding.bride %>
+        </p>
+
+        <p>
+          <strong>Groom:</strong>
+          <%= @wedding.groom %>
+        </p>
+
+        <p>
+          <strong>Date:</strong>
+          <%= @wedding.date %>
+        </p>
+      </div>
+        
+      <div class="panel-footer">
+
+        <%= link_to 'Edit', edit_wedding_path(@wedding) %> |
+        <%= link_to 'Back', weddings_path %>
+      </div>
+       
+    </div>
+  </div>
+
+
+  <div= class="col-md-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+
+        <p>
+          <strong>Venue</strong>
+        </p>
+      </div>
+        
+      
+        <% if @wedding.venues.blank? %>
+        <div class="panel-footer">
+
+         <strong>New:</strong>
+          <%= link_to "Create a Venue", new_wedding_venue_path(@wedding) %>
+       </div>
+
+        <%else %>
+
+        <div class="panel-body">
+
+          <% @wedding.venues.reload %>
+          <p>
+          <strong>Name:</strong>
+          <%= @wedding.venues.first.name %>
+          </p>
+
+          <p>
+          <strong>Description:</strong>
+          <%= @wedding.venues.first.description %>
+          </p>
+
+          <p>
+          <strong>Street:</strong>
+          <%= @wedding.venues.first.street %>
+          </p>
+
+          <p>
+          <strong>City:</strong>
+          <%= @wedding.venues.first.city %>
+          </p>
+
+
+          <p>
+          <strong>Zip:</strong>
+          <%= @wedding.venues.first.zip %>
+          </p>
+
+          <p>
+          <strong>State:</strong>
+          <%= @wedding.venues.first.state %>
+          </p>
+
+          <p>
+          <strong>URL:</strong>
+          <%= @wedding.venues.first.url %>
+          </p>
+        </div>
+        <div class="panel-footer">
+
+        <%= link_to 'Edit', edit_wedding_venue_path(@wedding, @wedding.venues.first) %> 
+        <%= link_to 'Back', weddings_path %>
+      </div>
+
+        
+       <%end%>
+
+  </div>
+</div>
+</div>
+
+
