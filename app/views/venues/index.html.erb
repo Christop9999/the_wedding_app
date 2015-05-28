@@ -1,9 +1,19 @@
-<p id="notice"><%= notice %></p>
-<div class="container">
-<div class="row">
-<div= class="col-md-4">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
+ <!-- main right col -->
+            <div class="column col-sm-10 col-xs-11" id="main">
+                
+               
+              
+                <div class="padding">
+                    <div class="full col-sm-9">
+                      
+                        <!-- content -->                      
+                        <div class="row">
+                          
+                         <!-- main col left --> 
+                         <div class="panel panel-default">
+                                <div class="panel-heading"> Venue
+                                </div>
+                                <div class="panel-body">
 
         <p>
           <strong>Venue</strong>
@@ -12,10 +22,10 @@
         
       
         <% if @wedding.venues.blank? %>
-        <div class="panel-footer">
+        
 
-         <strong>New:</strong>
-          <%= link_to "Create a Venue", new_wedding_venue_path(@wedding) %>
+         
+          <%= link_to "Create a Venue", new_wedding_venue_path(@wedding), class: "btn btn-info" if current_user.admin%> 
        </div>
 
         <%else %>
