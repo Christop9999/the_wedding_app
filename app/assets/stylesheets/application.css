@@ -25,7 +25,9 @@
 
 
 
-
+.dropdown-backdrop {
+    position: static;
+}
 
 .alert{
 
