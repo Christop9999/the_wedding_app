@@ -158,6 +158,7 @@ background-color: #9B59B6;
 
 .nav-pills > a:active{
 background-color: black;
+
 }
 
 .nav>li>a {
@@ -171,4 +172,5 @@ padding-right: 20px;
 
 .btn-info {
   background-color: white;
+  color: black;
 }

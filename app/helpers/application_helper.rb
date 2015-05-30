@@ -34,53 +34,48 @@ image_tag current_user.wedding.document.attachment.url
 end
 
 
-def wedding_venue
-	if current_user.wedding.venues.first
-		current_user.wedding.venues.first
+def wedding_venue(wedding)
+	if wedding.venues.first
+		wedding.venues.first
 	else
 		false
 	end
 
 end
 
-def venue_name
-current_user.wedding.venues.first.name
+def venue_name(wedding)
+wedding.venues.first.name
 end
 
 
-def venue_address_street
- current_user.wedding.venues.first.street
+def venue_address_street(wedding)
+ wedding.venues.first.street
 end
 
-def venue_address_city
- current_user.wedding.venues.first.city
+def venue_address_city(wedding)
+ wedding.venues.first.city
 end
 
-def venue_address_zip
- current_user.wedding.venues.first.zip
+def venue_address_zip(wedding)
+ wedding.venues.first.zip
 end
 
-def venue_url
- current_user.wedding.venues.first.url
+def venue_url(wedding)
+ wedding.venues.first.url
 end
 
 
-def venue_name
-current_user.wedding.venues.first.name
+def venue_name(wedding)
+wedding.venues.first.name
 end
 
-def venue_description
-current_user.wedding.venues.first.description
+def venue_description(wedding)
+wedding.venues.first.description
 end
 
-def venue_address_state
-current_user.wedding.venues.first.state
+def venue_address_state(wedding)
+wedding.venues.first.state
 	end
-
-
-
-
-
 
 
 end

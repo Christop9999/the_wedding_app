@@ -95,13 +95,13 @@
 
 
     <!-- Services Section -->
-    <% if  wedding_venue %>
+    <% if  wedding_venue(@wedding) %>
     <section id="services">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Venue</h2>
-                    <h3 class="section-subheading text-muted"><%= venue_description %></h3>
+                    <h3 class="section-subheading text-muted"><%= venue_description(@wedding) %></h3>
                 </div>
             </div>
             <div class="row text-center">
@@ -111,7 +111,7 @@
                         <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="service-heading">Location</h4>
-                    <p class="text-muted"><%= venue_name %></p>
+                    <p class="text-muted"><%= venue_name(@wedding) %></p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
@@ -119,8 +119,8 @@
                         <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="service-heading">Address</h4>
-                    <p class="text-muted"> <%= venue_address_street %></p>
-                    <p class="text-muted"> <%= venue_address_state + " " + venue_address_zip  %></p>
+                    <p class="text-muted"> <%= venue_address_street(@wedding) %></p>
+                    <p class="text-muted"> <%= venue_address_state(@wedding) + " " + venue_address_zip(@wedding)  %></p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
@@ -128,7 +128,7 @@
                         <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="service-heading">Link</h4>
-                    <p class="text-muted"><%= link_to(venue_name, venue_url) %> </p>
+                    <p class="text-muted"><%= link_to(venue_name(@wedding), venue_url(@wedding)) %> </p>
                 </div>
             </div>
         </div>

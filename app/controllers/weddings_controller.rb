@@ -37,8 +37,10 @@ class WeddingsController < ApplicationController
   # GET /weddings/1
   # GET /weddings/1.json
   def show
-   render layout: 'show'
-  end
+    
+    @wedding = Wedding.find(params[:id])
+    render layout: 'show'
+end
 
   # GET /weddings/new
   def new
