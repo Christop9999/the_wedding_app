@@ -12,7 +12,7 @@ module WeddingApp
   class Application < Rails::Application
     config.serve_static_assets = true
     config.assets.paths << "#{Rails}/vendor/assets/fonts"
-
+    config.assets.precompile += %w( *.svg *.eot *.woff *.ttf )
       # Enable the asset pipeline
     #config.assets.enabled = true
     # Settings in config/environments/* take precedence over those specified here.
