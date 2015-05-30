@@ -11,6 +11,7 @@ Bundler.require(*Rails.groups)
 module WeddingApp
   class Application < Rails::Application
     config.serve_static_assets = true
+    config.assets.paths << "#{Rails}/vendor/assets/fonts"
 
       # Enable the asset pipeline
     #config.assets.enabled = true
