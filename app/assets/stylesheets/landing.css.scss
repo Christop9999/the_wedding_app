@@ -10,6 +10,8 @@
  *
  *= require_self
  *= require_tree ./landing/
- *= require bootstrap
+
 */
 
+@import "bootstrap-sprockets";
+@import "bootstrap";

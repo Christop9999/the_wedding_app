@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150519002127) do
+ActiveRecord::Schema.define(version: 20150613221922) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -34,17 +34,17 @@ ActiveRecord::Schema.define(version: 20150519002127) do
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
 
-  create_table "documents", force: true do |t|
-    t.integer  "wedding_id"
+  create_table "galleries", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "attachment_file_name"
-    t.string   "attachment_content_type"
-    t.integer  "attachment_file_size"
-    t.datetime "attachment_updated_at"
+    t.integer  "wedding_id"
+    t.string   "name"
+    t.string   "description"
+    t.integer  "cover"
+    t.string   "token"
   end
 
-  add_index "documents", ["wedding_id"], name: "index_documents_on_wedding_id"
+  add_index "galleries", ["wedding_id"], name: "index_galleries_on_wedding_id"
 
   create_table "oauth_access_grants", force: true do |t|
     t.integer  "resource_owner_id", null: false
@@ -86,6 +86,39 @@ ActiveRecord::Schema.define(version: 20150519002127) do
 
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true
 
+  create_table "pictures", force: true do |t|
+    t.string   "description"
+    t.string   "image"
+    t.integer  "gallery_id"
+    t.string   "gallery_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  create_table "pins", force: true do |t|
+    t.integer  "wedding_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "pins", ["user_id"], name: "index_pins_on_user_id"
+  add_index "pins", ["wedding_id"], name: "index_pins_on_wedding_id"
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -126,6 +159,21 @@ ActiveRecord::Schema.define(version: 20150519002127) do
   end
 
   add_index "venues", ["wedding_id"], name: "index_venues_on_wedding_id"
+
+  create_table "votes", force: true do |t|
+    t.integer  "votable_id"
+    t.string   "votable_type"
+    t.integer  "voter_id"
+    t.string   "voter_type"
+    t.boolean  "vote_flag"
+    t.string   "vote_scope"
+    t.integer  "vote_weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
+  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
 
   create_table "wedding_guests", force: true do |t|
     t.integer  "guest_id"

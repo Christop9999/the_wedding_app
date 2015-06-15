@@ -34,6 +34,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li><%= link_to 'Wedding', weddings_path %></li>
+           
         
           <li><%= link_to current_user.full_name, edit_user_registration_path %> </li>
           <li><%= link_to "Log Out", logout_path %></li>
@@ -55,7 +56,8 @@
           <li><%= link_to "Home", weddings_path %></li>
           <li> <%= link_to 'Wedding', edit_wedding_path(current_user.wedding) if current_user.wedding%></li>
           <li> <%= link_to "Venue", wedding_venues_path(current_user.wedding) if current_user.wedding%></li>
-          <li><a href="#">Section</a></li>
+          <li> <%= link_to "Pins", wedding_pins_path(current_user.wedding) if current_user.wedding%></li>
+          <li> <%= link_to "Gallery", galleries_path %></li>
         </ul>
       </div>
   </div>

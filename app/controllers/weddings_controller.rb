@@ -45,7 +45,7 @@ end
   # GET /weddings/new
   def new
     @wedding = Wedding.new
-    @wedding.build_document
+    
   end
 
   # GET /weddings/1/edit
@@ -57,13 +57,20 @@ end
   # POST /weddings.json
   def create
 
-    @wedding = current_user.create_wedding(wedding_params)
+    @wedding = current_user.wedding(wedding_params)
+  
     
 
     respond_to do |format|
       if @wedding.save
         format.html { redirect_to @wedding, notice: 'Wedding was successfully created.' }
         format.json { render :show, status: :created, location: @wedding }
+        if params[:pictures]
+          params[:pictures].each { |picture|
+            @wedding.site_contents.create(picture: picture)
+          }
+        end
+
       else
         format.html { render :new }
         format.json { render json: @wedding.errors, status: :unprocessable_entity }
@@ -78,6 +85,12 @@ end
       if @wedding.update(wedding_params)
         format.html { redirect_to @wedding, notice: 'Wedding was successfully updated.' }
         format.json { render :show, status: :ok, location: @wedding }
+         format.json { render :show, status: :created, location: @wedding }
+        if params[:pictures]
+          params[:pictures].each { |picture|
+            @wedding.site_contents.create(picture: picture)
+          }
+        end
       else
         format.html { render :edit }
         format.json { render json: @wedding.errors, status: :unprocessable_entity }
@@ -111,7 +124,7 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wedding_params
-      params.require(:wedding).permit(:name, :bride, :groom, :date, document_attributes: [:attachment, :id]) if params[:wedding]
+      params.require(:wedding).permit(:name, :bride, :groom, :date, :site_contents) if params[:wedding]
     end
 
   

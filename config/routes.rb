@@ -4,6 +4,9 @@ use_doorkeeper
 devise_for :users, :controllers => { registrations: 'users/registrations' }
 #devise_for :admins, :controllers => { :sessions => "admins/sessions" }
 resources :wedding_guests
+resources :galleries 
+  resources :pictures
+
 
 devise_scope :user do
   get 'register', to: 'users/registrations#new', as: :register
@@ -18,7 +21,13 @@ authenticated :user, lambda {|u| u.admin == true} do
   get 'weddings/search_results', to: 'weddings#search_results'
   get 'weddings/add_wedding', to: 'weddings#add_wedding'
   resources :wedding_guests
+
   resources :weddings do
+  resources :pins do
+    member do
+      put "like", to: "pins#upvote"
+    end
+end 
   resources :venues 
 end
 
@@ -29,6 +38,11 @@ authenticated :user, lambda {|u| u.admin == false} do
   get 'weddings/search_results', to: 'weddings#search_results'
   get 'weddings', to: 'weddings#index'
   resources :weddings, only: [:show, :search_results] do
+    resources :pins do
+    member do
+      put "like", to: "pins#upvote"
+    end
+end 
   resources :venues 
 end
 end

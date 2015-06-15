@@ -21,11 +21,15 @@
                          <div class="<%= cycle('oddrow', 'evenrow') -%>">
                             <tr>
                               
+
+                            
                               <td><%= wedding.name %></td>
                               <td><%= wedding.bride %></td>
                               <td><%= wedding.groom %></td>
                               <td><%= wedding.date %></td>
                               <td><%= link_to 'Show', wedding %></td>
+                              <td><%= link_to "Pins", wedding_pins_path(wedding)%></td>
+
                               <% if current_user.admin %>
                               <td><%= link_to 'Edit', edit_wedding_path(wedding) %></td>
                               <td><%= link_to 'Destroy', wedding, method: :delete, data: { confirm: 'Are you sure?' } %></td>

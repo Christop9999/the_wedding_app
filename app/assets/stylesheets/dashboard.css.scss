@@ -9,6 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree ./show/
- *= require bootstrap
+ *= require_tree ./dashboard/
+ 
 */
+@import "bootstrap-sprockets";
+@import "bootstrap";

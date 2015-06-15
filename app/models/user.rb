@@ -4,12 +4,13 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_one :wedding
+  has_many :pins
   
   #belongs_to :wedding 
   
   has_many :wedding_guest, foreign_key: "guest_id"
   has_many :wedding_part, through: :wedding_guest
-  
+  has_many :site_contents
 
 
 
