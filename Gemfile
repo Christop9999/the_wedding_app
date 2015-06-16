@@ -6,6 +6,8 @@ gem 'rails', '4.1.6'
 group :development, :test do 
 	gem 'sqlite3'
 	gem 'rspec-rails', '~> 2.0'
+	gem 'capistrano'
+	gem 'capistrano-passenger'
 end
 
 group :production do
@@ -35,7 +37,6 @@ gem 'coffee-script-source', '1.8.0'
 gem 'jquery-turbolinks'
 gem 'doorkeeper'
 gem 'masonry-rails', '~> 0.2.4'
-gem 'acts_as_votable', '~> 0.10.0'
 gem 'haml', '~> 4.0.6'
 gem 'bootstrap-sass', '~> 3.3.4.1'
 gem 'simple_form', '~> 3.1.0'
