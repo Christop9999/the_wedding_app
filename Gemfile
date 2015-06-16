@@ -6,7 +6,7 @@ gem 'rails', '4.1.6'
 group :development, :test do 
 	gem 'sqlite3'
 	gem 'rspec-rails', '~> 2.0'
-	gem 'capistrano'
+	gem 'capistrano', '~> 3.1.0'
 	gem 'capistrano-passenger'
 end
 
