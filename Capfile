@@ -27,5 +27,5 @@ set :ssh_options, {:forward_agent => true}
 
 
 Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
-Rake::Task[:production].invoke
+
 
