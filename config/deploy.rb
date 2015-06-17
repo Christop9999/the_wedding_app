@@ -1,15 +1,21 @@
-# config valid only for current version of Capistrano
-lock '3.1.0'
+# config valid only for Capistrano 3.1
+# config valid only for Capistrano 3.1
+lock '3.4.0'
 
 set :application, 'the_wedding_app'
 set :repo_url, 'https://github.com/Christop9999/the_wedding_app.git'
 
+set :deploy_to, '/home/deploy/myapp'
+
+set :linked_files, %w{config/database.yml}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+
 
 # Default branch is :master
-# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
-set :deploy_to, '/home/deploy/myapp'
-# Default deploy_to directory is /var/www/my_app_name
-# set :deploy_to, '/var/www/my_app_name'
+# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
+
+# Default deploy_to directory is /var/www/my_app
+# set :deploy_to, '/var/www/my_app'
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -24,17 +30,16 @@ set :deploy_to, '/home/deploy/myapp'
 # set :pty, true
 
 # Default value for :linked_files is []
-# set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
+# set :linked_files, %w{config/database.yml}
 
 # Default value for linked_dirs is []
-# set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
+# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
-
 set :bundle_flags, "--no_deployment"
 
 namespace :deploy do
@@ -47,13 +52,7 @@ namespace :deploy do
     end
   end
 
-
-
   after :publishing, :restart
-
-after "deploy", "deploy:restart"
-after "deploy", "deploy:cleanup"
-
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
@@ -63,4 +62,5 @@ after "deploy", "deploy:cleanup"
       # end
     end
   end
+
 end
