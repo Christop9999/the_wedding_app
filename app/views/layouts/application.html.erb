@@ -54,9 +54,9 @@
         <ul class="nav nav-pills nav-stacked">
           
           <li><%= link_to "Home", weddings_path %></li>
-          <li> <%= link_to 'Wedding', edit_wedding_path(current_user.wedding) if current_user.wedding.id%></li>
-          <li> <%= link_to "Venue", wedding_venues_path(current_user.wedding) if current_user.wedding.id%></li>
-          <li> <%= link_to "Pins", wedding_pins_path(current_user.wedding) if current_user.wedding.id%></li>
+          <li> <%= link_to 'Wedding', edit_wedding_path(current_user.wedding) if current_user.wedding%></li>
+          <li> <%= link_to "Venue", wedding_venues_path(current_user.wedding) if current_user.wedding%></li>
+          <li> <%= link_to "Pins", wedding_pins_path(current_user.wedding) if current_user.wedding%></li>
           <li> <%= link_to "Gallery", galleries_path %></li>
         </ul>
       </div>

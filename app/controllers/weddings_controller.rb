@@ -44,7 +44,7 @@ end
 
   # GET /weddings/new
   def new
-    @wedding = current_user.build_wedding
+    @wedding = Wedding.new
     
   end
 
