@@ -1,7 +1,7 @@
 class WeddingsController < ApplicationController
   #before_action :set_wedding
   before_filter :authenticate_user!
-  before_action :wedding_layout, except: [:create, :new]
+  before_action :wedding_layout
  # layout :layout_by_resource
   #layout :wedding_layout
   # GET /weddings
