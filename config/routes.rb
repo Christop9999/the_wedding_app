@@ -5,7 +5,7 @@ devise_for :users, :controllers => { registrations: 'users/registrations' }
 #devise_for :admins, :controllers => { :sessions => "admins/sessions" }
 resources :wedding_guests
 resources :galleries 
-  resources :pictures
+resources :pictures
 
 
 devise_scope :user do
@@ -27,9 +27,9 @@ authenticated :user, lambda {|u| u.admin == true} do
     member do
       put "like", to: "pins#upvote"
     end
-end 
-  resources :venues 
-end
+  end 
+    resources :venues 
+  end
 
 end
 

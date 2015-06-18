@@ -1,6 +1,5 @@
 class EditGalleries < ActiveRecord::Migration
   def change
-  	remove_column :galleries, :picture_file_name
   	remove_column :galleries, :picture_file_size
   	remove_column :galleries, :picture_updated_at
   	remove_column :galleries, :picture_content_type

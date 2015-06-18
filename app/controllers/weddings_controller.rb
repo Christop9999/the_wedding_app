@@ -1,7 +1,7 @@
 class WeddingsController < ApplicationController
   #before_action :set_wedding
   before_filter :authenticate_user!
-  before_action :wedding_layout
+  before_action :wedding_layout, except: [:create, :new]
  # layout :layout_by_resource
   #layout :wedding_layout
   # GET /weddings
@@ -44,7 +44,7 @@ end
 
   # GET /weddings/new
   def new
-    @wedding = Wedding.new
+    @wedding = current_user.build_wedding
     
   end
 
@@ -57,20 +57,14 @@ end
   # POST /weddings.json
   def create
 
-    @wedding = current_user.wedding(wedding_params)
-  
     
-
+    @wedding = current_user.build_wedding(wedding_params)
+  
     respond_to do |format|
       if @wedding.save
         format.html { redirect_to @wedding, notice: 'Wedding was successfully created.' }
         format.json { render :show, status: :created, location: @wedding }
-        if params[:pictures]
-          params[:pictures].each { |picture|
-            @wedding.site_contents.create(picture: picture)
-          }
-        end
-
+        
       else
         format.html { render :new }
         format.json { render json: @wedding.errors, status: :unprocessable_entity }
@@ -117,14 +111,12 @@ end
       @wedding = Wedding.find(params[:id]) if params[:id]
     end
 
-    def set_guest
-
-    end
+    
 
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wedding_params
-      params.require(:wedding).permit(:name, :bride, :groom, :date, :site_contents) if params[:wedding]
+      params.require(:wedding).permit(:name, :bride, :groom, :date) 
     end
 
   

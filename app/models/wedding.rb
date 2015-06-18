@@ -1,7 +1,7 @@
 class Wedding < ActiveRecord::Base
 	has_many :venues
 	has_many :pins
-	has_many :site_contents
+	
 	belongs_to :user
 	#belongs_to :owner, class_name: "User", foreign_key: "user_id"
 	#has_many :guests, class_name: "User", foreign_key: "guest_id"
@@ -13,8 +13,8 @@ class Wedding < ActiveRecord::Base
 	#belongs_to :admin
 	
 
-	accepts_nested_attributes_for :pins
-	accepts_nested_attributes_for :site_contents
+	#accepts_nested_attributes_for :pins
+	
 
 
 	validates :name, presence: true,
