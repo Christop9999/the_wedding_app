@@ -1,4 +1,6 @@
+= link_to "Add Pin", new_wedding_pin_path(@wedding, @pin), class: "btn btn-default"
 #pins.transitions-enabled
+
 	- @pins.each do |pin|
 		.box.panel.panel-default
 			= link_to (image_tag pin.image.url), wedding_pin_path(@wedding, pin) if pin.image?

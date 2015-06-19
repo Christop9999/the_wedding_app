@@ -1,4 +1,5 @@
 #pin_show.row
+	
 	.col-md-8.col-md-offset-2
 		.panel.panel-default
 			.panel-heading.pin_image
@@ -24,3 +25,4 @@
 							- if user_signed_in?
 								= link_to "Edit", edit_wedding_pin_path, class: "btn btn-default"
 								= link_to "Delete", wedding_pin_path, method: :delete, data: {confirm: "Are you sure" }, class: "btn btn-default"
+	
