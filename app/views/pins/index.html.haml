@@ -8,6 +8,6 @@
 				%h2= link_to pin.title, wedding_pin_path(@wedding, pin)
 				%p.user
 				Submitted by
-				= pin.user.email
+				= pin.user.email if pin.user.email?
 
 				

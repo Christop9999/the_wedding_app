@@ -43,6 +43,12 @@ def wedding_venue(wedding)
 
 end
 
+def show_gallery(wedding)
+	wedding.galleries
+end
+
+
+
 def venue_name(wedding)
 wedding.venues.first.name
 end

@@ -3,16 +3,17 @@ class PinsController < ApplicationController
 	before_action :find_wedding, only: [:new, :create, :show, :index, :destroy, :update, :edit]
 
 	def index
-		@pins = Pin.all.order("created_at DESC")
+		@pins = @wedding.pins.all.order("created_at DESC")
 	end
 
 	def new
-		@pin = current_user.pins.build
+		@pin = @wedding.pins.build
 
 	end
 
 	def create
-		@pin = current_user.pins.build(pin_params)
+		@pin = @wedding.pins.new(pin_params)
+		@pin.user = current_user
 
 		if @pin.save
 			redirect_to wedding_pin_path(@wedding, @pin), notice: "Successfully created new Pin"
@@ -60,7 +61,7 @@ class PinsController < ApplicationController
 	private
 
 	def pin_params
-		params.require(:pin).permit(:title, :description, :image)
+		params.require(:pin).permit(:title, :description, :image, :wedding_id, :user_id)
 	end
 
 	def find_pin
@@ -70,6 +71,8 @@ class PinsController < ApplicationController
 	def find_wedding
 		@wedding = Wedding.find(params[:wedding_id])
 	end
+
+
 
 
 

@@ -1,7 +1,8 @@
-<div class="row">
+<div class="row" id="gallery">
+
   <h1>Galleries</h1>
 
-  <%= link_to 'New', new_gallery_path, :class => 'btn btn-mini' %>
+  <%= link_to 'New', new_wedding_gallery_path(:class => 'btn btn-mini') if current_user.admin?%>
   <p></p>
   
   <ul class="thumbnails files">
@@ -9,19 +10,21 @@
         <li class="span4" id="gallery_<%= gallery.id %>">
           <div class="thumbnail">
             <% if gallery.pictures.first %>
-            <%= link_to image_tag(gallery.pictures.first.image.url), gallery_path(gallery) %>
+            <%= link_to image_tag(gallery.pictures.first.image.url(:thumb)), wedding_gallery_path(params[:wedding_id], gallery) %>
             <% else %>
               N/A
             <% end %>
             <div class="caption">
               <p style="text-align: center;">
                 <%= gallery.name.truncate(14) %>
-                <%= link_to "Show", gallery_path(gallery) %>
-                <%= link_to "Edit", edit_gallery_path(gallery) %>
-                <%= link_to "Delete", gallery,
+                <%= link_to "Show", wedding_gallery_path(params[:wedding_id], gallery) %>
+                <% if current_user.admin? %>
+                <%= link_to "Edit", edit_wedding_gallery_path(params[:wedding_id], gallery) %>
+                <%= link_to "Delete", wedding_gallery_path(params[:wedding_id], gallery),
                   :data => { :confirm => "Are you sure?" },
                   :method => :delete
                 %>
+                <% end %>
               </p>
             </div>
           </div>

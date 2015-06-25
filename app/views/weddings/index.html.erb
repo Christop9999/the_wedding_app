@@ -29,6 +29,7 @@
                               <td><%= wedding.date %></td>
                               <td><%= link_to 'Show', wedding %></td>
                               <td><%= link_to "Pins", wedding_pins_path(wedding)%></td>
+                              <td><%= link_to "Galleries", wedding_galleries_path(wedding)%></td>
 
                               <% if current_user.admin %>
                               <td><%= link_to 'Edit', edit_wedding_path(wedding) %></td>

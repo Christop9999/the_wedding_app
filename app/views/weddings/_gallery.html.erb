@@ -1,0 +1,34 @@
+   <ul class="thumbnails files">
+    <% @wedding.galleries.each do |gallery| %>
+        <li class="span4" id="gallery_<%= gallery.id %>">
+          <div class="thumbnail">
+            <% if gallery.pictures.first %>
+            <%= link_to image_tag(gallery.pictures.first.image.url(:thumb)), wedding_gallery_path(@wedding, gallery) %>
+            <% else %>
+              N/A
+            <% end %>
+            <div class="caption">
+              <p style="text-align: center;">
+                <%= gallery.name.truncate(14) %>
+                <%= link_to "Show", wedding_gallery_path(@wedding, gallery) %>
+
+                </p>
+            </div>
+                    <% unless gallery.pictures.empty? %>
+                    <div id="links"><left> 
+
+                    <% gallery.pictures.each do |pic| %>
+    
+                      <%= link_to(image_tag(pic.image.url(:thumb)) , pic.image.url) %>
+                    <% end %> 
+                    </left></div>
+                  <% end %>
+                <% end %>
+              
+          </div>
+        </li>
+   
+
+
+    
+  </ul>

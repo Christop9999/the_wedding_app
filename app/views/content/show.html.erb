@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Wedding:</strong>
+  <%= @content.wedding %>
+  <%= image_tag @content.header.url(:medium) %>
+</p>
+
+<%= link_to 'Edit', edit_wedding_content_path(@wedding, @content) %> |
+<%= link_to 'Back', wedding_content_index_path(@wedding, @content) %>

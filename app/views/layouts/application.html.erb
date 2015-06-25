@@ -57,7 +57,8 @@
           <li> <%= link_to 'Wedding', edit_wedding_path(current_user.wedding) if current_user.wedding%></li>
           <li> <%= link_to "Venue", wedding_venues_path(current_user.wedding) if current_user.wedding%></li>
           <li> <%= link_to "Pins", wedding_pins_path(current_user.wedding) if current_user.wedding%></li>
-          <li> <%= link_to "Gallery", galleries_path %></li>
+          <li> <%= link_to "Gallery", wedding_galleries_path(current_user.wedding) if current_user.wedding%></li>
+          <li> <%= link_to "Content", wedding_content_index_path(current_user.wedding) if current_user.wedding%></li>
         </ul>
       </div>
   </div>

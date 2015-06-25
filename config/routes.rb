@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   
+  
+
 use_doorkeeper
 devise_for :users, :controllers => { registrations: 'users/registrations' }
 #devise_for :admins, :controllers => { :sessions => "admins/sessions" }
 resources :wedding_guests
-resources :galleries 
-resources :pictures
+
 
 
 devise_scope :user do
@@ -14,6 +15,7 @@ devise_scope :user do
   get '/login', to: 'users/sessions#new', as: :login
   get '/logout', to: 'users/sessions#destroy', as: :logout
   resources :wedding_guests
+
 end
 
 authenticated :user, lambda {|u| u.admin == true} do
@@ -23,12 +25,16 @@ authenticated :user, lambda {|u| u.admin == true} do
   resources :wedding_guests
 
   resources :weddings do
+  
   resources :pins do
     member do
       put "like", to: "pins#upvote"
     end
   end 
     resources :venues 
+    resources :galleries 
+  resources :pictures
+  resources :content
   end
 
 end
@@ -43,7 +49,10 @@ authenticated :user, lambda {|u| u.admin == false} do
       put "like", to: "pins#upvote"
     end
 end 
-  resources :venues 
+  resources :venues, only: [:show, :index]
+  resources :galleries, only: [:show, :index]
+  resources :pictures, only: [:show, :index]
+  
 end
 end
 

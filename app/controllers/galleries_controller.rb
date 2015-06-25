@@ -1,8 +1,9 @@
 class GalleriesController < ApplicationController
   # GET /galleries
   # GET /galleries.json
+  before_action :find_wedding, only: [:index, :new, :create, :edit, :update, :destroy]
   def index
-    @galleries = Gallery.all
+    @galleries = @wedding.galleries.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,7 +26,8 @@ class GalleriesController < ApplicationController
   # GET /galleries/new
   # GET /galleries/new.json
   def new
-    @gallery = Gallery.new
+   
+    @gallery = @wedding.galleries.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,7 +43,7 @@ class GalleriesController < ApplicationController
   # POST /galleries
   # POST /galleries.json
   def create
-    @gallery = Gallery.new(gallery_params)
+    @gallery = @wedding.galleries.new(gallery_params)
 
     respond_to do |format|
       if @gallery.save
@@ -53,7 +55,7 @@ class GalleriesController < ApplicationController
           }
         end
 
-        format.html { redirect_to @gallery, notice: 'Gallery was successfully created.' }
+        format.html { redirect_to wedding_gallery_path(@wedding, @gallery), notice: 'Gallery was successfully created.' }
         format.json { render json: @gallery, status: :created, location: @gallery }
       else
         format.html { render action: "new" }
@@ -75,7 +77,7 @@ class GalleriesController < ApplicationController
             @gallery.pictures.create(image: image)
           }
         end
-        format.html { redirect_to @gallery, notice: 'Gallery was successfully updated.' }
+        format.html { redirect_to wedding_gallery_path(@wedding, @gallery), notice: 'Gallery was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -91,7 +93,7 @@ class GalleriesController < ApplicationController
     @gallery.destroy
 
     respond_to do |format|
-      format.html { redirect_to galleries_url }
+      format.html { redirect_to wedding_galleries_path(@wedding) }
       format.json { head :no_content }
     end
   end
@@ -101,7 +103,13 @@ class GalleriesController < ApplicationController
   def gallery_params
     params.require(:gallery).permit(:description,
                                     :name,
-                                    :pictures
+                                    :pictures,
+                                    :wedding_id,
+                                    :user_id
                                    )
   end
+def find_wedding
+   @wedding = Wedding.find(params[:wedding_id])
+ end
+
 end

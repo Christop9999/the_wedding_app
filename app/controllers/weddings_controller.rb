@@ -50,6 +50,7 @@ end
 
   # GET /weddings/1/edit
   def edit
+    
     #@wedding.build_document
   end
 

@@ -1,0 +1,16 @@
+<%= simple_form_for([@wedding, @content], :url => wedding_content_index_path, html: {class: 'well', multipart: true }) do |f| %>
+  <%= f.error_notification %>
+
+
+<%= image_tag @content.header.url(:thumb) %>
+ 
+
+  <div class="header">
+    <%= f.input :header, type: :file %>
+    
+  </div> 
+
+  <div class="action">
+    <%= f.button :submit %>
+  </div>
+<% end %>
