@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150624205508) do
+ActiveRecord::Schema.define(version: 20150629195351) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -57,6 +57,21 @@ ActiveRecord::Schema.define(version: 20150624205508) do
   end
 
   add_index "galleries", ["wedding_id"], name: "index_galleries_on_wedding_id"
+
+  create_table "guest_lists", force: true do |t|
+    t.integer  "wedding_id"
+    t.string   "email"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.boolean  "attending"
+    t.integer  "invited"
+    t.boolean  "registered"
+    t.boolean  "thank_you"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "guest_lists", ["wedding_id"], name: "index_guest_lists_on_wedding_id"
 
   create_table "oauth_access_grants", force: true do |t|
     t.integer  "resource_owner_id", null: false

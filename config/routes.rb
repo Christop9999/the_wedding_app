@@ -2,10 +2,13 @@ Rails.application.routes.draw do
   
   
 
+ 
+
 use_doorkeeper
 devise_for :users, :controllers => { registrations: 'users/registrations' }
 #devise_for :admins, :controllers => { :sessions => "admins/sessions" }
 resources :wedding_guests
+resources :guest_lists
 
 
 

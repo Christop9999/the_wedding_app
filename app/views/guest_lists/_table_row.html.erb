@@ -1,0 +1,7 @@
+<tr>
+  <td><%= guest_list.first_name %></td>
+  <td><%= guest_list.last_name %></td>
+  <td><%= link_to 'Show', guest_list %></td>
+  <td><%= link_to 'Edit', edit_guest_list_path(guest_list) %></td>
+  <td><%= link_to 'Destroy', guest_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>
