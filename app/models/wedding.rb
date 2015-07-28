@@ -8,6 +8,7 @@ class Wedding < ActiveRecord::Base
 	has_many :wedding_guests
 	has_many :guests, through: :wedding_guests
 	has_one :content
+	has_many :guest_lists
 	
 
 	#belongs_to :admin
